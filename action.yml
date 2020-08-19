@@ -1,0 +1,23 @@
+name: PR Review Validator
+description: A Github Action to determine whether PR reviews are coming from the correct team
+runs:
+  using: docker
+  image: Dockerfile
+inputs:
+  token:
+    description: GitHub token to access pull request details
+    required: true
+  approver_team_slug:
+    description: Only approvals from member of this team are considered as valid
+    required: true
+  path_pattern:
+    description: Path to evaluated files in RegEx
+    required: true
+  send_comment:
+    description: Create a comment containing validation errors
+    required: false
+    default: "false"
+  clear_comments:
+    description: Clear previous error comment(s)
+    required: false
+    default: "false"
