@@ -45,7 +45,7 @@ def validate_file(path_pattern, file_path, approvals, team_slug):
             print('INVALID: {}'.format(file_path))
             return [
                 {
-                    'message': '`{}` is not approved by `{}` team member'.format(file_path, team_slug)
+                    'message': 'It has NOT been approved by `{}` team member'.format(team_slug)
                 }
             ]
         else:
@@ -78,7 +78,6 @@ def delete_comments(repo, pull_number):
     pattern = re.compile('^{}'.format(re.escape(header_sub)))
 
     for comment in comments:
-        print(comment)
         if comment['user'] == username and pattern.match(comment['body']):
             delete_comment(repo, comment['id'])
 
