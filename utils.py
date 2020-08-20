@@ -16,7 +16,6 @@ COMMENT = '**Message:** {message}'
 
 def request(verb, url, data=None):
     headers = {'Authorization': 'token {}'.format(os.getenv('INPUT_TOKEN'))}
-
     verb_map = {
         'get': requests.get,
         'post': requests.post,
@@ -32,6 +31,11 @@ def request(verb, url, data=None):
             return response.content
     else:
         raise Exception('Status code {}: {}'.format(response.status_code, url))
+
+
+def json_from_file(file_path):
+    with open(file_path) as f:
+        return json.load(f)
 
 
 def validate_file(path_pattern, file_path, approvals, team_slug):

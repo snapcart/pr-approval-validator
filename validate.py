@@ -4,7 +4,8 @@ from distutils.util import strtobool
 
 import jq
 
-from utils import BASE, create_comment, delete_comments, request, validate_file
+from utils import (BASE, create_comment, delete_comments, json_from_file,
+                   request, validate_file)
 
 team_slug = os.getenv('INPUT_APPROVER_TEAM_SLUG')
 path_pattern = os.getenv('INPUT_PATH_PATTERN')
